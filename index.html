@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astura Pads · East African Women's Health Manufacturing</title>
+<meta name="description" content="Astura is an early-stage East African manufacturing company building local production of affordable menstrual products, starting in Dire Dawa, Ethiopia, and scaling across the region." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Noto+Serif+Ethiopic:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -45 100 88"><defs><linearGradient id="g" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="%23F7B4C4"/><stop offset="100%" stop-color="%23DB6E92"/></linearGradient><path id="p" d="M 0 0 C -5 -2 -10 -8 -10 -18 C -10 -26 -5 -32 -2.2 -33 L 0 -30 L 2.2 -33 C 5 -32 10 -26 10 -18 C 10 -8 5 -2 0 0 Z"/></defs><path d="M -40 -2 Q -40 36 0 36 Q 40 36 40 -2" fill="none" stroke="%23E89BB0" stroke-width="4" stroke-linecap="round"/><g fill="url(%23g)"><use href="%23p"/><use href="%23p" transform="rotate(72)"/><use href="%23p" transform="rotate(144)"/><use href="%23p" transform="rotate(216)"/><use href="%23p" transform="rotate(288)"/></g><circle r="2.5" fill="%23FCEEEE"/></svg>' />
+
+<style>
+  :root {
+    /* Astura Pads brand system */
+    --cream: #FCEEEE;          /* pale blush background */
+    --cream-deep: #F7E1E3;     /* slightly deeper pale pink */
+    --blush: #F7B4C4;           /* soft pink */
+    --blush-deep: #F191AC;     /* mid tone */
+    --rose: #EB7FA0;            /* medium rose — primary accent */
+    --plum: #5B3A37;            /* deep brown — logo & headings */
+    --ink: #5B3A37;             /* body text (same as plum) */
+    --muted: #8C7B77;           /* warm taupe — secondary text */
+    --border: #F3D9DD;          /* soft pink border */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--plum);
+  }
+
+  /* Amharic (Ethiopic script) — swap to Noto Ethiopic */
+  html[lang="am"] body {
+    font-family: 'Noto Sans Ethiopic', 'Montserrat', system-ui, sans-serif;
+  }
+  html[lang="am"] h1,
+  html[lang="am"] h2,
+  html[lang="am"] h3,
+  html[lang="am"] h4,
+  html[lang="am"] .mission-quote,
+  html[lang="am"] .logo-wordmark .name {
+    font-family: 'Noto Serif Ethiopic', 'Cormorant Garamond', serif;
+    letter-spacing: 0;
+  }
+  /* Ethiopic glyphs have different vertical metrics — loosen line height */
+  html[lang="am"] h1, html[lang="am"] h2, html[lang="am"] h3 { line-height: 1.3; }
+
+  /* Language switcher */
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 24px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+  }
+  .lang-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn[data-lang="am"] {
+    font-family: 'Noto Sans Ethiopic', 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+  .lang-btn:hover { color: var(--plum); }
+  .lang-btn.active {
+    background: var(--rose);
+    color: #fff;
+  }
+  @media (max-width: 520px) {
+    .lang-switcher { margin-left: 8px; padding: 3px; }
+    .lang-btn { padding: 5px 9px; font-size: 10px; }
+  }
+
+  a { color: var(--rose); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--plum); }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(252, 238, 238, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .logo-bloom {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+  .logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-wordmark .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--plum);
+    letter-spacing: 0.08em;
+  }
+  .logo-wordmark .name em {
+    font-style: normal;
+    font-size: 15px;
+    color: var(--rose);
+    letter-spacing: 0.18em;
+    margin-left: 2px;
+  }
+  .logo-wordmark .tagline-small {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  @media (max-width: 520px) {
+    .logo-wordmark .tagline-small { display: none; }
+    .logo-wordmark .name { font-size: 22px; }
+    .logo-bloom { width: 36px; height: 36px; }
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--rose); }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 100px 0 120px;
+    background:
+      radial-gradient(ellipse at top right, rgba(247, 180, 196, 0.45), transparent 60%),
+      radial-gradient(ellipse at bottom left, rgba(235, 127, 160, 0.18), transparent 55%),
+      var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247, 180, 196, 0.5), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    max-width: 820px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    padding: 8px 18px;
+    border: 1px solid var(--blush);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 1.05;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 400;
+  }
+  .hero .tagline-somali {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--rose);
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+  .hero .lede {
+    font-size: clamp(17px, 1.6vw, 20px);
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto 44px;
+    line-height: 1.7;
+  }
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 15px 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--plum);
+    color: var(--cream);
+    border-color: var(--plum);
+  }
+  .btn-primary:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--cream);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--plum);
+    border-color: var(--blush-deep);
+  }
+  .btn-secondary:hover {
+    background: var(--blush);
+    color: var(--plum);
+  }
+
+  /* ---------- SECTION BASE ---------- */
+  section {
+    padding: 100px 0;
+  }
+  .section-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-size: clamp(34px, 4.5vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .section-intro {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 680px;
+    line-height: 1.75;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about {
+    background: var(--cream-deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-copy p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .about-copy p:last-child { margin-bottom: 0; }
+  .about-copy strong {
+    color: var(--plum);
+    font-weight: 500;
+  }
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 40%, #FFF5F6 0%, var(--cream) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 60px rgba(91, 58, 55, 0.10);
+    border: 1px solid var(--border);
+  }
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Stacked logo (About section) — matches brand guide */
+  .logo-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 28px;
+    width: 100%;
+  }
+  .stack-bloom {
+    width: 42%;
+    max-width: 180px;
+    aspect-ratio: 1 / 0.88;
+    margin-bottom: 14px;
+  }
+  .stack-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 7vw, 70px);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--plum);
+    line-height: 1;
+  }
+  .stack-pads {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 6px;
+  }
+  .stack-dash {
+    display: inline-block;
+    width: clamp(28px, 5vw, 44px);
+    height: 1.5px;
+    background: var(--rose);
+  }
+  .stack-pads-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.6vw, 26px);
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: var(--rose);
+  }
+  .stack-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(9px, 1.05vw, 11px);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: var(--plum);
+    text-transform: uppercase;
+    margin-top: 22px;
+    padding-top: 0;
+  }
+  html[lang="am"] .stack-wordmark,
+  html[lang="am"] .stack-pads-text { letter-spacing: 0.05em; }
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; gap: 50px; }
+    .about-visual { aspect-ratio: 5 / 4; max-width: 480px; margin: 0 auto; }
+  }
+
+  /* ---------- MISSION ---------- */
+  .mission {
+    text-align: center;
+    padding: 120px 0;
+  }
+  .mission-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.35;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--plum);
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .mission-quote::before {
+    content: "\201C";
+    display: block;
+    font-size: 120px;
+    line-height: 0.8;
+    color: var(--blush);
+    margin-bottom: 10px;
+    font-style: normal;
+  }
+  .mission-attribution {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-top: 32px;
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillars {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    border-top: 1px solid var(--border);
+  }
+  .pillars-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  .pillars-header .section-title {
+    margin: 0 auto 22px;
+  }
+  .pillars-header .section-intro {
+    margin: 0 auto;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .pillar {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(91, 58, 55, 0.08);
+  }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rose);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .pillar h3 {
+    font-size: 28px;
+    margin-bottom: 14px;
+    color: var(--plum);
+  }
+  .pillar p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 720px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- IMPACT STATS ---------- */
+  .impact {
+    background: var(--plum);
+    color: var(--cream);
+    padding: 90px 0;
+  }
+  .impact h2, .impact .section-label {
+    color: var(--blush);
+  }
+  .impact .section-title {
+    color: var(--cream);
+    margin-bottom: 60px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .stat {
+    border-left: 2px solid var(--rose);
+    padding-left: 24px;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    line-height: 1;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .stat-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(252, 238, 238, 0.82);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 720px) {
+    .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    text-align: center;
+    background: var(--cream);
+    padding: 120px 0;
+  }
+  .contact .section-title {
+    margin: 0 auto 22px;
+  }
+  .contact .section-intro {
+    margin: 0 auto 40px;
+  }
+  .contact-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 40px;
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(91, 58, 55, 0.06);
+  }
+  .contact-card h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .contact-card p {
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: var(--plum);
+    font-weight: 500;
+    padding: 14px 28px;
+    background: var(--cream-deep);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .contact-email:hover {
+    background: var(--blush);
+    color: var(--plum);
+  }
+  .contact-meta {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .contact-meta strong {
+    color: var(--plum);
+    font-weight: 500;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--cream-deep);
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-inner .logo { font-size: 22px; }
+  .footer-inner p {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- ASK ASTURA (AI CHAT) ---------- */
+  .assistant {
+    background: linear-gradient(180deg, var(--cream-deep) 0%, var(--cream) 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .assistant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .assistant-copy .section-title {
+    margin-bottom: 22px;
+  }
+  .assistant-fine {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.55);
+    border-left: 2px solid var(--rose);
+    border-radius: 4px;
+  }
+  .chat-window {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(91, 58, 55, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+    overflow: hidden;
+  }
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background: var(--cream-deep);
+    border-bottom: 1px solid var(--border);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--plum);
+  }
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+  }
+  .chat-msg {
+    max-width: 86%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    animation: chatFadeIn 0.3s ease;
+  }
+  @keyframes chatFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-bot {
+    align-self: flex-start;
+    background: var(--cream);
+    color: var(--ink);
+    border-bottom-left-radius: 6px;
+  }
+  .chat-user {
+    align-self: flex-end;
+    background: var(--rose);
+    color: #fff;
+    border-bottom-right-radius: 6px;
+  }
+  .chat-msg.thinking {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .chat-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 14px;
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+  .chat-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    border-radius: 100px;
+    padding: 12px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14.5px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .chat-input:focus {
+    border-color: var(--rose);
+    background: #fff;
+  }
+  .chat-send {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--plum);
+    color: var(--cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .chat-send:hover {
+    background: var(--rose);
+    transform: translateY(-1px);
+  }
+  .chat-send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+  @media (max-width: 860px) {
+    .assistant-grid { grid-template-columns: 1fr; gap: 44px; }
+    .chat-window { height: 460px; }
+  }
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG SPRITE: Minimal Bloom logo -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- Petal gradient: lighter at tip, deeper at base -->
+    <linearGradient id="bloomGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#F7B4C4" />
+      <stop offset="100%" stop-color="#DB6E92" />
+    </linearGradient>
+    <!-- Cherry-blossom petal with notched tip; base at (0,0), tip at y=-33 -->
+    <path id="asturaPetal" d="M 0 0 C -5 -2 -10 -8 -10 -18 C -10 -26 -5 -32 -2.2 -33 L 0 -30 L 2.2 -33 C 5 -32 10 -26 10 -18 C 10 -8 5 -2 0 0 Z" />
+  </defs>
+  <symbol id="bloom" viewBox="-50 -45 100 88">
+    <!-- Cradle arc -->
+    <path d="M -40 -2 Q -40 36 0 36 Q 40 36 40 -2" fill="none" stroke="#E89BB0" stroke-width="3.2" stroke-linecap="round" />
+    <!-- Five petals -->
+    <g fill="url(#bloomGrad)">
+      <use href="#asturaPetal" />
+      <use href="#asturaPetal" transform="rotate(72)" />
+      <use href="#asturaPetal" transform="rotate(144)" />
+      <use href="#asturaPetal" transform="rotate(216)" />
+      <use href="#asturaPetal" transform="rotate(288)" />
+    </g>
+    <!-- Stamens (6 radiating lines with anther dots) -->
+    <g stroke="#FFFFFF" stroke-width="0.7" stroke-linecap="round" fill="#FFFFFF">
+      <g><line x1="0" y1="-3" x2="0" y2="-10" /><circle cx="0" cy="-10.8" r="1.1" /></g>
+      <g transform="rotate(60)"><line x1="0" y1="-3" x2="0" y2="-10" /><circle cx="0" cy="-10.8" r="1.1" /></g>
+      <g transform="rotate(120)"><line x1="0" y1="-3" x2="0" y2="-10" /><circle cx="0" cy="-10.8" r="1.1" /></g>
+      <g transform="rotate(180)"><line x1="0" y1="-3" x2="0" y2="-10" /><circle cx="0" cy="-10.8" r="1.1" /></g>
+      <g transform="rotate(240)"><line x1="0" y1="-3" x2="0" y2="-10" /><circle cx="0" cy="-10.8" r="1.1" /></g>
+      <g transform="rotate(300)"><line x1="0" y1="-3" x2="0" y2="-10" /><circle cx="0" cy="-10.8" r="1.1" /></g>
+    </g>
+    <!-- Central pistil -->
+    <circle cx="0" cy="0" r="1.7" fill="#FCEEEE" />
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo-link" aria-label="Astura Pads home">
+      <svg class="logo-bloom" aria-hidden="true"><use href="#bloom" /></svg>
+      <div class="logo-wordmark">
+        <span class="name">ASTURA<em>PADS</em></span>
+        <span class="tagline-small" data-i18n="logo.tagline">Women's Health &middot; Made in Ethiopia</span>
+      </div>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#mission" data-i18n="nav.mission">Mission</a></li>
+        <li><a href="#pillars" data-i18n="nav.approach">Approach</a></li>
+        <li><a href="#assistant" data-i18n="nav.assistant">Ask Astura</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="am">አማ</button>
+        <button class="lang-btn" data-lang="so">SOO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow" data-i18n="hero.eyebrow">East African Manufacturing &middot; Women's Health</span>
+    <h1 data-i18n="hero.title">Made in East Africa. <em>For East Africa.</em></h1>
+    <p class="tagline-somali" data-i18n="hero.tagline">Daryeel. Astur. Kalsooni.</p>
+    <p class="lede" data-i18n="hero.lede">
+      Astura is an early-stage East African manufacturing company building local production of the everyday products women and girls need. We start with affordable, locally-made sanitary pads from Dire Dawa, Ethiopia.
+    </p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary" data-i18n="hero.ctaPrimary">Partner with us</a>
+      <a href="#assistant" class="btn btn-secondary" data-i18n="hero.ctaSecondary">Ask Astura</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <span class="section-label" data-i18n="about.label">About Astura</span>
+      <h2 class="section-title" data-i18n="about.title">An East African company, building what the region needs.</h2>
+      <p data-i18n="about.p1">
+        <strong>Astura</strong> is an early-stage East African manufacturing company focused on making essential women's health products available, affordable, and made in the region itself.
+      </p>
+      <p data-i18n="about.p2">
+        We launch with sanitary pads produced in Dire Dawa, Ethiopia. They're designed for comfort, priced for access, and packaged in Amharic and Somali for the women who actually use them. Local manufacturing means lower prices, more jobs, and a supply chain that doesn't break when borders close.
+      </p>
+      <p data-i18n="about.p3">
+        Over time, Astura will expand into adjacent products women and families need every day: diapers, feminine care, and broader hygiene goods. All locally made, locally distributed, and locally owned.
+      </p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="logo-stack">
+        <svg class="stack-bloom" aria-hidden="true"><use href="#bloom" /></svg>
+        <div class="stack-wordmark">ASTURA</div>
+        <div class="stack-pads">
+          <span class="stack-dash"></span>
+          <span class="stack-pads-text">PADS</span>
+          <span class="stack-dash"></span>
+        </div>
+        <div class="stack-tagline">WOMEN'S HEALTH &nbsp;&middot;&nbsp; MADE IN ETHIOPIA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="container">
+    <div class="reveal">
+      <p class="mission-quote" data-i18n="mission.quote">
+        To build East Africa's industrial base for women's health. One product, one factory, one community at a time.
+      </p>
+      <p class="mission-attribution" data-i18n="mission.attribution">Our Mission</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="pillars-header reveal">
+      <span class="section-label" data-i18n="pillars.label">Our Approach</span>
+      <h2 class="section-title" data-i18n="pillars.title">Four pillars that guide every decision.</h2>
+      <p class="section-intro" data-i18n="pillars.intro">
+        From the factory floor in Dire Dawa to the women who use our products every month, these principles shape how we design, manufacture, and deliver.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <span class="pillar-num">01</span>
+        <h3 data-i18n="pillars.p1.title">Local Manufacturing</h3>
+        <p data-i18n="pillars.p1.desc">Producing pads in Dire Dawa to reduce costs, shorten supply chains, and keep value inside the communities we serve.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-num">02</span>
+        <h3 data-i18n="pillars.p2.title">Comfort &amp; Quality</h3>
+        <p data-i18n="pillars.p2.desc">Designed for softness, absorbency, and everyday reliability. Products women can depend on without compromise.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-num">03</span>
+        <h3 data-i18n="pillars.p3.title">Accessibility</h3>
+        <p data-i18n="pillars.p3.desc">Focused on making menstrual products more affordable for underserved communities, because access is non-negotiable.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-num">04</span>
+        <h3 data-i18n="pillars.p4.title">Impact</h3>
+        <p data-i18n="pillars.p4.desc">Creating jobs, strengthening local production, and building a foundation for women's health manufacturing in East Africa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK ASTURA -->
+<section class="assistant" id="assistant">
+  <div class="container assistant-grid">
+    <div class="assistant-copy reveal">
+      <span class="section-label" data-i18n="assistant.label">Ask Astura</span>
+      <h2 class="section-title" data-i18n="assistant.title">A women's health assistant, in your language.</h2>
+      <p class="section-intro" data-i18n="assistant.intro">
+        Women across East Africa deserve clear, judgment-free answers about their bodies. Ask Astura answers questions about periods, pregnancy, hygiene, and women's wellness in <strong>English, Amharic, and Somali</strong>.
+      </p>
+      <p class="assistant-fine" data-i18n="assistant.fine">
+        Educational only. Always confidential. Always refers serious questions to a doctor, midwife, or pharmacist.
+      </p>
+    </div>
+    <div class="assistant-chat reveal">
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+          <svg class="logo-bloom" style="width:22px;height:22px" aria-hidden="true"><use href="#bloom" /></svg>
+          <span data-i18n="assistant.chatHeader">Ask Astura</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-msg chat-bot" data-i18n="assistant.welcome">Hi, I'm Astura. Ask me anything about periods, pregnancy, hygiene, or women's health. I answer in English, Amharic, or Somali. I'm here to help you understand your body, not to diagnose. For anything serious, please see a doctor or midwife.</div>
+        </div>
+        <form class="chat-input-row" id="chatForm" autocomplete="off">
+          <input
+            type="text"
+            id="chatInput"
+            class="chat-input"
+            data-i18n-placeholder="assistant.placeholder"
+            placeholder="Type your question…"
+            aria-label="Ask a question"
+          />
+          <button type="submit" class="chat-send" aria-label="Send">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="impact">
+  <div class="container">
+    <span class="section-label" data-i18n="impact.label">Why It Matters</span>
+    <h2 class="section-title" data-i18n="impact.title">The opportunity ahead.</h2>
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num">500M+</div>
+        <div class="stat-label" data-i18n="impact.stat1">Women and girls globally lack adequate access to menstrual products and facilities.</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num" data-i18n="impact.stat2.num">1 in 10</div>
+        <div class="stat-label" data-i18n="impact.stat2">African girls miss school during their period. A gap local manufacturing can help close.</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">Dire Dawa</div>
+        <div class="stat-label" data-i18n="impact.stat3">Our base. A strategic manufacturing hub with the talent and infrastructure to scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label" data-i18n="contact.label">Get in Touch</span>
+      <h2 class="section-title" data-i18n="contact.title">Let's build this together.</h2>
+      <p class="section-intro" data-i18n="contact.intro">
+        We welcome inquiries from grant partners, mission-aligned investors, suppliers, and community organizations who share our vision.
+      </p>
+
+      <div class="contact-card">
+        <h3 data-i18n="contact.reachOut">Reach out</h3>
+        <p data-i18n="contact.reachOutDesc">For partnerships, funding, and supplier inquiries.</p>
+        <a href="mailto:AsturaPads@gmail.com" class="contact-email">AsturaPads@gmail.com</a>
+        <div class="contact-meta" data-i18n="contact.meta">
+          <strong>Astura Pads</strong> &nbsp;&middot;&nbsp; Dire Dawa, Ethiopia
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <a href="#" class="logo-link" aria-label="Astura Pads">
+      <svg class="logo-bloom" style="width:32px;height:32px" aria-hidden="true"><use href="#bloom" /></svg>
+      <div class="logo-wordmark">
+        <span class="name" style="font-size:20px">ASTURA<em style="font-size:13px">PADS</em></span>
+      </div>
+    </a>
+    <p data-i18n="footer.copyright">&copy; 2026 Astura Pads &middot; Dire Dawa, Ethiopia</p>
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     TRANSLATIONS
+     Edit any string below to refine wording. Format: en / am / so
+     Note: am (Amharic) and so (Somali) are first-pass translations
+     and should be reviewed by native speakers before launch.
+     ============================================================ */
+  const translations = {
+    en: {
+      "logo.tagline": "Women's Health · Made in Ethiopia",
+      "nav.about": "About",
+      "nav.mission": "Mission",
+      "nav.approach": "Approach",
+      "nav.assistant": "Ask Astura",
+      "nav.contact": "Contact",
+      "hero.eyebrow": "East African Manufacturing · Women's Health",
+      "hero.title": "Made in East Africa. <em>For East Africa.</em>",
+      "hero.tagline": "Daryeel. Astur. Kalsooni.",
+      "hero.lede": "Astura is an early-stage East African manufacturing company building local production of the everyday products women and girls need. We start with affordable, locally-made sanitary pads from Dire Dawa, Ethiopia.",
+      "hero.ctaPrimary": "Partner with us",
+      "hero.ctaSecondary": "Ask Astura",
+      "about.label": "About Astura",
+      "about.title": "An East African company, building what the region needs.",
+      "about.p1": "<strong>Astura</strong> is an early-stage East African manufacturing company focused on making essential women's health products available, affordable, and made in the region itself.",
+      "about.p2": "We launch with sanitary pads produced in Dire Dawa, Ethiopia. They're designed for comfort, priced for access, and packaged in Amharic and Somali for the women who actually use them. Local manufacturing means lower prices, more jobs, and a supply chain that doesn't break when borders close.",
+      "about.p3": "Over time, Astura will expand into adjacent products women and families need every day: diapers, feminine care, and broader hygiene goods. All locally made, locally distributed, and locally owned.",
+      "mission.quote": "To build East Africa's industrial base for women's health. One product, one factory, one community at a time.",
+      "mission.attribution": "Our Mission",
+      "pillars.label": "Our Approach",
+      "pillars.title": "Four pillars that guide every decision.",
+      "pillars.intro": "From the factory floor in Dire Dawa to the women who use our products every month, these principles shape how we design, manufacture, and deliver.",
+      "pillars.p1.title": "Local Manufacturing",
+      "pillars.p1.desc": "Producing pads in Dire Dawa to reduce costs, shorten supply chains, and keep value inside the communities we serve.",
+      "pillars.p2.title": "Comfort & Quality",
+      "pillars.p2.desc": "Designed for softness, absorbency, and everyday reliability. Products women can depend on without compromise.",
+      "pillars.p3.title": "Accessibility",
+      "pillars.p3.desc": "Focused on making menstrual products more affordable for underserved communities, because access is non-negotiable.",
+      "pillars.p4.title": "Impact",
+      "pillars.p4.desc": "Creating jobs, strengthening local production, and building a foundation for women's health manufacturing in East Africa.",
+      "assistant.label": "Ask Astura",
+      "assistant.title": "A women's health assistant, in your language.",
+      "assistant.intro": "Women across East Africa deserve clear, judgment-free answers about their bodies. Ask Astura answers questions about periods, pregnancy, hygiene, and women's wellness in <strong>English, Amharic, and Somali</strong>.",
+      "assistant.fine": "Educational only. Always confidential. Always refers serious questions to a doctor, midwife, or pharmacist.",
+      "assistant.chatHeader": "Ask Astura",
+      "assistant.welcome": "Hi, I'm Astura. Ask me anything about periods, pregnancy, hygiene, or women's health. I answer in English, Amharic, or Somali. I'm here to help you understand your body, not to diagnose. For anything serious, please see a doctor or midwife.",
+      "assistant.placeholder": "Type your question…",
+      "assistant.thinking": "Thinking…",
+      "assistant.error": "Sorry, I couldn't reach the server. Please try again in a moment.",
+      "impact.label": "Why It Matters",
+      "impact.title": "The opportunity ahead.",
+      "impact.stat1": "Women and girls globally lack adequate access to menstrual products and facilities.",
+      "impact.stat2.num": "1 in 10",
+      "impact.stat2": "African girls miss school during their period. A gap local manufacturing can help close.",
+      "impact.stat3": "Our base. A strategic manufacturing hub with the talent and infrastructure to scale.",
+      "contact.label": "Get in Touch",
+      "contact.title": "Let's build this together.",
+      "contact.intro": "We welcome inquiries from grant partners, mission-aligned investors, suppliers, and community organizations who share our vision.",
+      "contact.reachOut": "Reach out",
+      "contact.reachOutDesc": "For partnerships, funding, and supplier inquiries.",
+      "contact.meta": "<strong>Astura Pads</strong> &nbsp;·&nbsp; Dire Dawa, Ethiopia",
+      "footer.copyright": "© 2026 Astura Pads · Dire Dawa, Ethiopia"
+    },
+    am: {
+      "logo.tagline": "የሴቶች ጤና · በኢትዮጵያ የተሠራ",
+      "nav.about": "ስለ እኛ",
+      "nav.mission": "ተልዕኮ",
+      "nav.approach": "አካሄድ",
+      "nav.assistant": "አስቱራን ይጠይቁ",
+      "nav.contact": "አግኙን",
+      "hero.eyebrow": "የምሥራቅ አፍሪካ ማምረት · የሴቶች ጤና",
+      "hero.title": "በምሥራቅ አፍሪካ የተሠራ። <em>ለምሥራቅ አፍሪካ።</em>",
+      "hero.tagline": "ጤና። ክብር። እምነት።",
+      "hero.lede": "አስቱራ ሴቶችና ልጃገረዶች በየዕለቱ የሚፈልጓቸውን ምርቶች በአገር ውስጥ ለማምረት እየገነባ ያለ የመጀመሪያ ደረጃ የምሥራቅ አፍሪካ የማምረቻ ኩባንያ ነው። ጅማሬው ድሬዳዋ፣ ኢትዮጵያ ውስጥ የተሠሩ ተመጣጣኝ የንፅህና መጠበቂያ ፓዶች ናቸው።",
+      "hero.ctaPrimary": "ከእኛ ጋር ይተባበሩ",
+      "hero.ctaSecondary": "አስቱራን ይጠይቁ",
+      "about.label": "ስለ አስቱራ",
+      "about.title": "ምሥራቅ አፍሪካ የሚፈልገውን የሚገነባ ኩባንያ።",
+      "about.p1": "<strong>አስቱራ</strong> ለሴቶች ጤና አስፈላጊ የሆኑ ምርቶችን ተደራሽና ተመጣጣኝ ለማድረግ እና በራሷ ክልል ውስጥ ለማምረት ያተኮረ የመጀመሪያ ደረጃ የምሥራቅ አፍሪካ ማምረቻ ኩባንያ ነው።",
+      "about.p2": "ጅማሬያችን በድሬዳዋ፣ ኢትዮጵያ የተሠሩ የንፅህና መጠበቂያ ፓዶች ናቸው። ለምቾት የተዘጋጁ፣ ለተደራሽነት የተጣራ ዋጋ ያላቸው፣ እና ለሚጠቀሟቸው ሴቶች በአማርኛና ሶማልኛ የታሸጉ ናቸው። የአገር ውስጥ ምርት ማለት ዝቅተኛ ዋጋ፣ ብዙ ሥራ፣ እና ድንበሮች ሲዘጉ የማይሰበር የአቅርቦት ሰንሰለት ማለት ነው።",
+      "about.p3": "በጊዜ ሂደት፣ አስቱራ ሴቶችና ቤተሰቦች በየዕለቱ ወደሚፈልጓቸው ተጓዳኝ ምርቶች ይስፋፋል፦ ዳይፐሮች፣ ሴታዊ እንክብካቤ፣ እና ሰፊ የንፅህና ምርቶች። ሁሉም በአገር ውስጥ የተሠሩ፣ በአገር ውስጥ የተሰራጩ፣ እና በአገር ውስጥ ባለቤት የተያዙ ናቸው።",
+      "mission.quote": "የምሥራቅ አፍሪካን የሴቶች ጤና የኢንዱስትሪ መሠረት መገንባት። በአንድ ምርት፣ በአንድ ፋብሪካ፣ በአንድ ማህበረሰብ።",
+      "mission.attribution": "ተልዕኮአችን",
+      "pillars.label": "አካሄዳችን",
+      "pillars.title": "እያንዳንዱን ውሳኔ የሚመሩ አራት ምሰሶዎች።",
+      "pillars.intro": "በድሬዳዋ ካለው ፋብሪካ ወለል አንስቶ እያንዳንዱ ወር ምርቶቻችንን የሚጠቀሙ ሴቶች ድረስ፣ እነዚህ መርሆዎች እንዴት እንደምንቀርጽ፣ እንደምናመርት እና እንደምናደርስ ይወስናሉ።",
+      "pillars.p1.title": "የአገር ውስጥ ምርት",
+      "pillars.p1.desc": "ወጪን ለመቀነስ፣ የአቅርቦት ሰንሰለቶችን ለማሳጠር እና እሴት በምናገለግላቸው ማህበረሰቦች ውስጥ ለማስቀመጥ በድሬዳዋ ፓዶችን ማምረት።",
+      "pillars.p2.title": "ምቾት እና ጥራት",
+      "pillars.p2.desc": "ለለዘብነት፣ ለመምጠጥ አቅም እና ለዕለት ተዕለት አስተማማኝነት የተዘጋጁ። ሴቶች ያለምንም ስምምነት ሊታመኗቸው የሚችሉ ምርቶች።",
+      "pillars.p3.title": "ተደራሽነት",
+      "pillars.p3.desc": "የንፅህና መጠበቂያ ፓዶችን ለተገለሉ ማህበረሰቦች የበለጠ ተመጣጣኝ ለማድረግ ያተኮረ፣ ምክንያቱም ተደራሽነት ተደራዳሪ አይደለም።",
+      "pillars.p4.title": "ተጽዕኖ",
+      "pillars.p4.desc": "የሥራ ዕድሎችን መፍጠር፣ የአገር ውስጥ ምርትን ማጠናከር እና በምሥራቅ አፍሪካ ለሴቶች ጤና ምርት መሠረት መጣል።",
+      "assistant.label": "አስቱራን ይጠይቁ",
+      "assistant.title": "በቋንቋዎ የሚያገለግል የሴቶች ጤና ረዳት።",
+      "assistant.intro": "በምሥራቅ አፍሪካ ያሉ ሴቶች ስለ ሰውነታቸው ግልጽና ያለ ፍርድ መልሶችን ይገባቸዋል። ‹አስቱራን ይጠይቁ› ስለ ወር አበባ፣ እርግዝና፣ ንፅህና እና የሴቶች ጤና ጥያቄዎችን በ<strong>እንግሊዝኛ፣ አማርኛ እና ሶማልኛ</strong> ይመልሳል።",
+      "assistant.fine": "ለትምህርት ብቻ። ሁልጊዜ ሚስጥራዊ። ከባድ ጥያቄዎችን ሁልጊዜ ወደ ሐኪም፣ አዋላጅ ወይም ፋርማሲስት ይመራል።",
+      "assistant.chatHeader": "አስቱራን ይጠይቁ",
+      "assistant.welcome": "ሰላም፣ እኔ አስቱራ ነኝ። ስለ ወር አበባ፣ እርግዝና፣ ንፅህና ወይም የሴቶች ጤና ማንኛውንም ጥያቄ ይጠይቁኝ። በእንግሊዝኛ፣ በአማርኛ ወይም በሶማልኛ መልስ እሰጣለሁ። እኔ እዚህ ያለሁት ሰውነትዎን እንዲረዱ ለመርዳት ነው እንጂ ለመመርመር አይደለም። ለማንኛውም ከባድ ጉዳይ፣ እባክዎ ሐኪም ወይም አዋላጅ ይመልከቱ።",
+      "assistant.placeholder": "ጥያቄዎን ይጻፉ…",
+      "assistant.thinking": "እያሰብኩ ነው…",
+      "assistant.error": "ይቅርታ፣ አገልጋዩን መድረስ አልቻልኩም። እባክዎ በቅርቡ እንደገና ይሞክሩ።",
+      "impact.label": "ለምን አስፈላጊ ነው",
+      "impact.title": "ፊት ለፊት ያለው ዕድል።",
+      "impact.stat1": "በዓለም ዙሪያ ሴቶችና ልጃገረዶች በቂ የንፅህና መጠበቂያ ፓዶችና ተቋማት ተደራሽ አይደሉም።",
+      "impact.stat2.num": "ከ10 ውስጥ 1",
+      "impact.stat2": "የአፍሪካ ልጃገረዶች በወር አበባ ጊዜ ትምህርታቸውን ያጣሉ። በአገር ውስጥ ምርት ሊሞላ የሚችል ክፍተት።",
+      "impact.stat3": "መሠረታችን። ለማደግ የሚያስችል ተሰጥኦ እና መሠረተ ልማት ያለው ስትራቴጂካዊ የማምረቻ ማዕከል።",
+      "contact.label": "ያግኙን",
+      "contact.title": "አብረን እንገንባው።",
+      "contact.intro": "ራዕያችንን ከሚጋሩ የስጦታ ባልደረቦች፣ ተልዕኮ-ተሳሳዮች ባለሀብቶች፣ አቅራቢዎች እና የማህበረሰብ ድርጅቶች ጥያቄዎችን በደስታ እንቀበላለን።",
+      "contact.reachOut": "ያግኙን",
+      "contact.reachOutDesc": "ለአጋርነት፣ ለገንዘብ ድጋፍ እና ለአቅራቢ ጥያቄዎች።",
+      "contact.meta": "<strong>አስቱራ ፓድስ</strong> &nbsp;·&nbsp; ድሬዳዋ፣ ኢትዮጵያ",
+      "footer.copyright": "© 2026 አስቱራ ፓድስ · ድሬዳዋ፣ ኢትዮጵያ"
+    },
+    so: {
+      "logo.tagline": "Caafimaadka Haweenka · Waxaa laga sameeyay Itoobiya",
+      "nav.about": "Ku saabsan",
+      "nav.mission": "Hadafkeena",
+      "nav.approach": "Habkeena",
+      "nav.assistant": "Weydii Astura",
+      "nav.contact": "Xiriir",
+      "hero.eyebrow": "Warshadaynta Bariga Afrika · Caafimaadka Haweenka",
+      "hero.title": "Waxaa laga sameeyay Bariga Afrika. <em>Loogu talagalay Bariga Afrika.</em>",
+      "hero.tagline": "Daryeel. Astur. Kalsooni.",
+      "hero.lede": "Astura waa shirkad warshadeed oo Bariga Afrika ah oo marxalad hore ku jirta, dhisaysa soo saarista alaabta ay haweenka iyo gabdhuhu maalin walba u baahan yihiin. Waxaan ka bilaabaynaa alaab caadada ah oo qiimaha jaban oo lagu sameeyay Dire Dawa, Itoobiya.",
+      "hero.ctaPrimary": "Nala wada shaqee",
+      "hero.ctaSecondary": "Weydii Astura",
+      "about.label": "Ku saabsan Astura",
+      "about.title": "Shirkad Bariga Afrika ah, dhisaysa waxa gobolku u baahan yahay.",
+      "about.p1": "<strong>Astura</strong> waa shirkad warshadeed oo Bariga Afrika ah oo marxalad hore ku jirta, oo diiradda saareysa in la helo, qiimaha jaban yahay, oo lagu sameeyo gudaha gobolka alaabta lagama maarmaanka ah ee caafimaadka haweenka.",
+      "about.p2": "Waxaan ka bilaabaynaa alaab caadada ah oo lagu soo saaray Dire Dawa, Itoobiya. Waxaa loo qaabeeyay raaxada, lagu qiimeeyay helitaanka, oo lagu duubay luqadaha Amharic iyo Soomaaliga ee haweenka isticmaala. Warshadaynta gudahu waxay keenaysaa qiimo jaban, shaqooyin badan, iyo silsilad sahay oo aan jabin marka xuduudaha la xidho.",
+      "about.p3": "Waqti gudahood, Astura waxay u ballaaran doontaa alaab kale oo haweenka iyo qoysasku u baahan yihiin maalin walba: kaalsoonida, daryeelka haweenka, iyo alaabta nadaafadda guud. Dhammaantood gudaha laga sameeyay, gudaha lagu qaybiyay, oo gudaha leh.",
+      "mission.quote": "In la dhiso aasaaska warshadaynta Bariga Afrika ee caafimaadka haweenka. Hal alaab, hal warshad, hal bulsho marba.",
+      "mission.attribution": "Hadafkeena",
+      "pillars.label": "Habkeena",
+      "pillars.title": "Afar tiir oo hagaya go'aan kasta.",
+      "pillars.intro": "Laga bilaabo warshadda Dire Dawa ilaa haweenka bishii kasta isticmaala alaabadeena, mabaadi'dani waxay qaabeeyaan sida aan u naqshadeeyno, u soo saarno, iyo u geyno.",
+      "pillars.p1.title": "Warshadaynta Gudaha",
+      "pillars.p1.desc": "Soo saarista pads gudaha Dire Dawa si loo yareeyo kharashka, loo gaabiyo silsiladaha sahaymaha, oo qiimaha lagu hayo bulshooyinka aan u adeegno.",
+      "pillars.p2.title": "Raaxo iyo Tayada",
+      "pillars.p2.desc": "Loo qaabeeyay jilicsanaan, nuugid sare, iyo isku-halleyn maalinle ah. Alaab ay haweenku ku halleyn karaan iyada oo aan dhimasho lahayn.",
+      "pillars.p3.title": "Helitaan",
+      "pillars.p3.desc": "Diiradda saareysa in alaabada caadada lagu qiimeeyo qiimo jaban bulshooyinka aan helin helitaanka, maxaa yeelay helitaanku waa shay aan laga hadli karin.",
+      "pillars.p4.title": "Saameyn",
+      "pillars.p4.desc": "Abuuritaanka shaqooyin, xoojinta soo saarista gudaha, iyo dhisidda aasaas u ah warshadaynta caafimaadka haweenka ee Bariga Afrika.",
+      "assistant.label": "Weydii Astura",
+      "assistant.title": "Caawiye caafimaadka haweenka, luqaddaada.",
+      "assistant.intro": "Haweenka Bariga Afrika waxay u qalmaan jawaabo cad oo aan xukun lahayn oo ku saabsan jirkooda. Weydii Astura wuxuu ka jawaabaa su'aalaha ku saabsan caadada, uurka, nadaafadda, iyo caafimaadka haweenka adoo isticmaalaya <strong>Ingiriis, Amharic, iyo Soomaali</strong>.",
+      "assistant.fine": "Waxbarasho oo keliya. Mar walba qarsoodi. Mar walba su'aalaha culus wuxuu u gudbiyaa dhakhtar, umulisada, ama farmashiiste.",
+      "assistant.chatHeader": "Weydii Astura",
+      "assistant.welcome": "Salaan, waxaan ahay Astura. Wax kasta i weydii oo ku saabsan caadada, uurka, nadaafadda, ama caafimaadka haweenka. Waxaan ku jawaabaa Ingiriis, Amharic, ama Soomaali. Waxaan halkan u joogaa inaan kaa caawiyo inaad fahamto jirkaaga, ma aha inaan baadho. Wax kasta oo culus, fadlan eeg dhakhtar ama umulisada.",
+      "assistant.placeholder": "Ku qor su'aashaada…",
+      "assistant.thinking": "Waan ka fakirayaa…",
+      "assistant.error": "Waan ka xumahay, ma gaadhi karo serfarka. Fadlan isku day mar kale wax yar.",
+      "impact.label": "Sababta Ay Muhiim U Tahay",
+      "impact.title": "Fursadda horena u taal.",
+      "impact.stat1": "Haweenka iyo gabdhaha adduunka oo dhan waxay u baahan yihiin helitaan ku filan oo ah alaabada caadada iyo tas-hiilaadka.",
+      "impact.stat2.num": "1 ka mid ah 10",
+      "impact.stat2": "Gabdhaha Afrikaanka ah waxay ka maqnaadaan dugsiga xilliga caadada. Farqi uu warshadaynta gudaha xidhi karto.",
+      "impact.stat3": "Saldhigeena. Xarun warshadayn oo istiraatiijiyadeed leh hibooyin iyo kaabayaal lagu kobci karo.",
+      "contact.label": "Nala Xidhiidh",
+      "contact.title": "Aan wada dhisno.",
+      "contact.intro": "Waxaan soo dhawaynaynaa weydiimaha ka imaanaya shuraako deeq-bixiyaal ah, maal-gashadayaal hadafkeena ah, alaab-qeybiyeyaal, iyo urur bulsho oo la wadaaga aragtideena.",
+      "contact.reachOut": "Nala soo xidhiidh",
+      "contact.reachOutDesc": "Iskaashi, maalgelin, iyo weydiimaha alaab-qeybiyeyaasha.",
+      "contact.meta": "<strong>Astura Pads</strong> &nbsp;·&nbsp; Dire Dawa, Itoobiya",
+      "footer.copyright": "© 2026 Astura Pads · Dire Dawa, Itoobiya"
+    }
+  };
+
+  /* ============================================================
+     LANGUAGE SWITCHING
+     ============================================================ */
+  function setLanguage(lang) {
+    if (!translations[lang]) lang = 'en';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key] !== undefined) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    // Apply placeholder translations (for chat input, etc.)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang][key] !== undefined) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      }
+    });
+    // Update button active state
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    // Remember user choice
+    try { localStorage.setItem('astura-lang', lang); } catch (e) {}
+  }
+
+  /* ============================================================
+     AUTO-DETECTION
+     Priority: saved preference → browser language → IP geolocation → English
+     ============================================================ */
+  async function detectLanguage() {
+    // 1. User's previous choice (highest priority)
+    try {
+      const saved = localStorage.getItem('astura-lang');
+      if (saved && translations[saved]) return saved;
+    } catch (e) {}
+
+    // 2. Browser language
+    const browserLang = (navigator.language || '').toLowerCase();
+    if (browserLang.startsWith('am')) return 'am';
+    if (browserLang.startsWith('so')) return 'so';
+
+    // 3. IP-based geolocation (free, no key needed)
+    try {
+      const res = await fetch('https://ipapi.co/json/', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.country_code === 'ET') return 'am';       // Ethiopia → Amharic
+        if (data.country_code === 'SO') return 'so';       // Somalia → Somali
+        if (data.country_code === 'DJ') return 'so';       // Djibouti → Somali
+      }
+    } catch (e) { /* network failed, fall through */ }
+
+    // 4. Default
+    return 'en';
+  }
+
+  // Wire up switcher buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
+  // Boot: detect and apply
+  (async () => {
+    const lang = await detectLanguage();
+    setLanguage(lang);
+  })();
+
+  /* ============================================================
+     REVEAL ON SCROLL
+     ============================================================ */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ============================================================
+     ASK ASTURA CHAT
+     Sends user messages to /api/chat (a serverless function
+     that calls Claude). The API endpoint, system prompt, and
+     deployment instructions are in chat-server-README.md.
+     ============================================================ */
+  // The backend endpoint that powers Ask Astura. When deployed on Netlify, the
+  // serverless function will be accessible at /.netlify/functions/ask-astura. If you
+  // deploy the project elsewhere, update this path accordingly. See README for
+  // details on creating the ask-astura Netlify function.
+  const ASTURA_CHAT_ENDPOINT = '/.netlify/functions/ask-astura';
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatSendBtn = chatForm ? chatForm.querySelector('.chat-send') : null;
+  const chatHistory = []; // {role: 'user'|'assistant', content: string}
+
+  function appendMessage(role, text, opts = {}) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + (role === 'user' ? 'chat-user' : 'chat-bot');
+    if (opts.thinking) div.classList.add('thinking');
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div;
+  }
+
+  async function sendChat(userText) {
+    chatHistory.push({ role: 'user', content: userText });
+    appendMessage('user', userText);
+    chatInput.value = '';
+    chatSendBtn.disabled = true;
+
+    const currentLang = document.documentElement.lang || 'en';
+    const thinkingText = (translations[currentLang] && translations[currentLang]['assistant.thinking']) || 'Thinking…';
+    const thinkingEl = appendMessage('assistant', thinkingText, { thinking: true });
+
+    try {
+      const res = await fetch(ASTURA_CHAT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: chatHistory,
+          lang: currentLang
+        })
+      });
+      if (!res.ok) throw new Error('Server error');
+      const data = await res.json();
+      const reply = (data && data.reply) ? data.reply : '…';
+      thinkingEl.classList.remove('thinking');
+      thinkingEl.textContent = reply;
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      const errorText = (translations[currentLang] && translations[currentLang]['assistant.error']) || 'Sorry, I could not reach the server. Please try again.';
+      thinkingEl.classList.remove('thinking');
+      thinkingEl.textContent = errorText;
+    } finally {
+      chatSendBtn.disabled = false;
+      chatInput.focus();
+    }
+  }
+
+  if (chatForm) {
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+      sendChat(text);
+    });
+  }
+</script>
+
+</body>
+</html>
