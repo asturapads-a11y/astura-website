@@ -12,8 +12,8 @@ function loadKnowledgeBase() {
       if (fs.existsSync(filePath)) {
         return fs.readFileSync(filePath, "utf8");
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error("Knowledge file error:", err);
     }
   }
 
@@ -26,23 +26,29 @@ exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      body: "Method Not Allowed"
+      body: "Method Not Allowed",
     };
   }
 
   try {
+    console.log("Function started");
+
     const body = JSON.parse(event.body || "{}");
 
     let userMessage = "";
 
     if (body.message) {
       userMessage = body.message;
-    } else if (body.messages && body.messages.length) {
+    } else if (body.messages?.length) {
       const lastUser = [...body.messages]
         .reverse()
-        .find(msg => msg.role === "user");
+        .find((msg) => msg.role === "user");
 
       userMessage = lastUser?.content || "";
+    }
+
+    if (!process.env.GEMINI_API_KEY) {
+      throw new Error("GEMINI_API_KEY environment variable is missing");
     }
 
     const prompt = `
@@ -56,7 +62,7 @@ RULES:
 - Respond in English, Somali, or Amharic depending on the user's language.
 - Never diagnose diseases.
 - Never prescribe medications.
-- If symptoms are severe, unusual, or dangerous, advise the user to contact a doctor, nurse, pharmacist, or midwife.
+- If symptoms are severe or dangerous, advise seeing a doctor, nurse, pharmacist, or midwife.
 - If uncertain, say you are uncertain.
 
 USER QUESTION:
@@ -68,46 +74,55 @@ ${userMessage}
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           contents: [
             {
               parts: [
                 {
-                  text: prompt
-                }
-              ]
-            }
-          ]
-        })
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+        }),
       }
     );
 
     const data = await response.json();
 
+    console.log("Gemini status:", response.status);
+    console.log("Gemini response:", JSON.stringify(data));
+
+    if (!response.ok) {
+      throw new Error(
+        `Gemini API error ${response.status}: ${JSON.stringify(data)}`
+      );
+    }
+
     const reply =
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "Sorry, Ask Astura is temporarily unavailable.";
+      "I'm sorry, I couldn't generate a response.";
 
     return {
       statusCode: 200,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        reply
-      })
+      body: JSON.stringify({ reply }),
     };
-
   } catch (error) {
-    console.error(error);
+    console.error("ASK ASTURA ERROR:", error);
 
     return {
       statusCode: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        error: "Ask Astura is temporarily unavailable."
-      })
+        error: error.message,
+      }),
     };
   }
 };
