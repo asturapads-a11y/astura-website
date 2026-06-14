@@ -2,127 +2,154 @@ const fs = require("fs");
 const path = require("path");
 
 function loadKnowledgeBase() {
-  const possiblePaths = [
-    path.join(__dirname, "../../knowledge/astura_knowledge.txt"),
-    path.join(__dirname, "../../astura_knowledge.txt"),
-  ];
+const possiblePaths = [
+path.join(__dirname, "../../knowledge/astura_knowledge.txt"),
+path.join(__dirname, "../../astura_knowledge.txt"),
+];
 
-  for (const filePath of possiblePaths) {
-    try {
-      if (fs.existsSync(filePath)) {
-        return fs.readFileSync(filePath, "utf8");
-      }
-    } catch (err) {
-      console.error("Knowledge file error:", err);
-    }
-  }
+for (const filePath of possiblePaths) {
+try {
+if (fs.existsSync(filePath)) {
+return fs.readFileSync(filePath, "utf8");
+}
+} catch (err) {
+console.error("Knowledge file error:", err);
+}
+}
 
-  return "";
+return "";
 }
 
 const ASTURA_KNOWLEDGE = loadKnowledgeBase();
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: "Method Not Allowed",
-    };
-  }
+if (event.httpMethod !== "POST") {
+return {
+statusCode: 405,
+body: "Method Not Allowed",
+};
+}
 
-  try {
-    console.log("Function started");
+try {
+console.log("Function started");
 
-    const body = JSON.parse(event.body || "{}");
+```
+const body = JSON.parse(event.body || "{}");
 
-    let userMessage = "";
+let userMessage = "";
 
-    if (body.message) {
-      userMessage = body.message;
-    } else if (body.messages?.length) {
-      const lastUser = [...body.messages]
-        .reverse()
-        .find((msg) => msg.role === "user");
+if (body.message) {
+  userMessage = body.message;
+} else if (body.messages && body.messages.length) {
+  const lastUser = [...body.messages]
+    .reverse()
+    .find((msg) => msg.role === "user");
 
-      userMessage = lastUser?.content || "";
-    }
+  userMessage = lastUser?.content || "";
+}
 
-    if (!process.env.GEMINI_API_KEY) {
-      throw new Error("GEMINI_API_KEY environment variable is missing");
-    }
+if (!userMessage) {
+  return {
+    statusCode: 400,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      error: "No message provided.",
+      reply: "Please type a question first.",
+    }),
+  };
+}
 
-    const prompt = `
+if (!process.env.GEMINI_API_KEY) {
+  throw new Error("GEMINI_API_KEY environment variable is missing");
+}
+
+const prompt = `
+```
+
 You are Ask Astura, a women's health assistant for Astura Pads.
 
 KNOWLEDGE BASE:
 ${ASTURA_KNOWLEDGE}
 
 RULES:
-- Answer questions about periods, menstrual health, puberty, hygiene, pregnancy, and women's wellness.
-- Respond in English, Somali, or Amharic depending on the user's language.
-- Never diagnose diseases.
-- Never prescribe medications.
-- If symptoms are severe or dangerous, advise seeing a doctor, nurse, pharmacist, or midwife.
-- If uncertain, say you are uncertain.
+
+* Answer questions about periods, menstrual health, puberty, hygiene, pregnancy, and women's wellness.
+* Respond in English, Somali, or Amharic depending on the user's language.
+* Never diagnose diseases.
+* Never prescribe medications or dosages.
+* If symptoms are severe, unusual, or dangerous, advise the user to contact a doctor, nurse, pharmacist, or midwife.
+* If the user mentions severe bleeding, fainting, severe abdominal pain, pregnancy with bleeding, sexual assault, suicidal thoughts, or trouble breathing, tell them to seek urgent medical help immediately.
+* If uncertain, say you are uncertain.
+* Keep answers short, warm, clear, and educational.
 
 USER QUESTION:
 ${userMessage}
 `;
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [
+```
+const response = await fetch(
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      contents: [
+        {
+          parts: [
             {
-              parts: [
-                {
-                  text: prompt,
-                },
-              ],
+              text: prompt,
             },
           ],
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    console.log("Gemini status:", response.status);
-    console.log("Gemini response:", JSON.stringify(data));
-
-    if (!response.ok) {
-      throw new Error(
-        `Gemini API error ${response.status}: ${JSON.stringify(data)}`
-      );
-    }
-
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "I'm sorry, I couldn't generate a response.";
-
-    return {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ reply }),
-    };
-  } catch (error) {
-    console.error("ASK ASTURA ERROR:", error);
-
-    return {
-      statusCode: 500,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        error: error.message,
-      }),
-    };
+        },
+      ],
+    }),
   }
+);
+
+const data = await response.json();
+
+console.log("Gemini status:", response.status);
+console.log("Gemini response:", JSON.stringify(data));
+
+if (!response.ok) {
+  throw new Error(
+    `Gemini API error ${response.status}: ${JSON.stringify(data)}`
+  );
+}
+
+const reply =
+  data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+  "I'm sorry, I couldn't generate a response right now.";
+
+return {
+  statusCode: 200,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ reply }),
+};
+```
+
+} catch (error) {
+console.error("ASK ASTURA ERROR:", error);
+
+```
+return {
+  statusCode: 500,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    error: error.message,
+    reply:
+      "Sorry, Ask Astura is temporarily unavailable. If this is urgent, please contact a doctor, nurse, midwife, pharmacist, or local emergency service.",
+  }),
+};
+```
+
+}
 };
